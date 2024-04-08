@@ -1,4 +1,7 @@
 #include "rsa.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int main(int argc, char **argv)
 {
@@ -15,12 +18,14 @@ int main(int argc, char **argv)
 	ptr = fopen(argv[1], "r");
 	if (ptr == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", ptr);
+		fprintf(stderr, "Error: Can't open file\n");
 		return (exit_code);
 	}
-	while (getline(&buffer, &count, fptr) != -1)
+	while (getline(&buffer, n, ptr) != -1)
 	{
-		fact(buffer);
+		factor(buffer);
 	}
+	fclose(ptr);
+	free(buffer);
 	return (0);
 }

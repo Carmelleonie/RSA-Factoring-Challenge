@@ -31,3 +31,19 @@ int krsa(char *buf)
 	}
 	return (0);
 }
+
+bool _isprime(int num)
+{
+	int temp = 0, i = 2;
+
+	while (i <= num / 2)
+	{
+		if (num % i == 0)
+		{
+			return (true);
+		}
+		return (false);
+	}
+	return (false);
+}
+

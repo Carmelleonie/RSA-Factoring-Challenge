@@ -1,4 +1,7 @@
 #include "rsa.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int main(int argc, char **argv)
 {
@@ -18,9 +21,11 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", ptr);
 		return (exit_code);
 	}
-	while(getline(&buffer, &count, fptr) != -1)
+	while(getline(&buffer, n, ptr) != -1)
 	{
 		krsa(buffer);
 	}
+	fclose(ptr);
+	free(buffer);
 	return (0);
 }
